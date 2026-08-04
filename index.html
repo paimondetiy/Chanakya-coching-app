@@ -71,6 +71,9 @@
         .quiz-option { display: block; width: 100%; text-align: left; background: #f1f5f9; border: 1px solid var(--border); padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
         .quiz-option.correct { background: #dcfce7; border-color: #22c55e; color: #166534; }
         .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+
+        .class-btn { background: #f1f5f9; border: 2px solid var(--border); padding: 12px; border-radius: 10px; font-weight: 600; text-align: center; cursor: pointer; color: var(--primary-navy); transition: 0.2s; margin-bottom: 10px; display: block; width: 100%; }
+        .class-btn:hover { background: var(--primary-navy); color: var(--white); border-color: var(--primary-navy); }
         
         .footer-info { text-align: center; margin-top: 20px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; }
         .map-btn { display: inline-flex; align-items: center; gap: 5px; color: var(--primary-navy); font-weight: 600; text-decoration: none; background: #e2e8f0; padding: 5px 15px; border-radius: 20px; margin-top: 10px; }
@@ -173,19 +176,32 @@
         </div>
     </section>
 
-    <!-- QUIZ SECTION -->
+    <!-- QUIZ SECTION WITH CLASS SELECTOR -->
     <section id="quizzes" class="app-section">
         <h3 class="section-title">Live Practice Test</h3>
-        <div class="quiz-container" id="quizUI">
+        
+        <!-- Step 1: Select Class -->
+        <div class="quiz-container" id="classSelectUI">
+            <h4 style="margin-bottom: 15px; color: var(--primary-navy);">Select Your Class:</h4>
+            <div class="class-btn" onclick="selectClass('class10')">Class 10th Test</div>
+            <div class="class-btn" onclick="selectClass('class9')">Class 9th Test</div>
+            <div class="class-btn" onclick="selectClass('class8')">Class 8th Test</div>
+        </div>
+
+        <!-- Step 2: Quiz UI -->
+        <div class="quiz-container" id="quizUI" style="display: none;">
+            <button style="background: none; border: none; color: var(--accent-saffron); font-weight: 600; cursor: pointer; margin-bottom: 15px;" onclick="backToClasses()"><i class="fa-solid fa-arrow-left"></i> Change Class</button>
             <h4 id="q-text" style="margin-bottom: 15px; color: var(--primary-navy); font-size: 1.1rem;">Loading...</h4>
             <div id="options-box"></div>
             <button id="next-btn" class="enroll-btn" style="display: none; margin-top: 15px;" onclick="nextQuestion()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
         </div>
+
+        <!-- Step 3: Result UI -->
         <div class="quiz-container" id="resultUI" style="display: none; text-align: center;">
             <i class="fa-solid fa-trophy" style="font-size: 3rem; color: #eab308; margin-bottom: 10px;"></i>
             <h3>Test Completed!</h3>
             <p id="score-text" style="margin: 10px 0; font-size: 1.2rem; font-weight: bold;"></p>
-            <button class="enroll-btn" onclick="startQuiz()">Restart Test</button>
+            <button class="enroll-btn" onclick="backToClasses()">Choose Another Class</button>
         </div>
     </section>
 
@@ -216,28 +232,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- QUIZ ENGINE ---
+        // --- CLASS WISE QUIZ ENGINE ---
+        let selectedClass = null;
         let currentQ = 0;
         let score = 0;
         let answered = false;
 
-        function startQuiz() {
+        function selectClass(className) {
+            if (typeof quizData === 'undefined' || !quizData[className]) {
+                alert("इस क्लास के लिए अभी प्रश्न उपलब्ध नहीं हैं।");
+                return;
+            }
+            selectedClass = className;
             currentQ = 0;
             score = 0;
+            
+            document.getElementById('classSelectUI').style.display = 'none';
             document.getElementById('resultUI').style.display = 'none';
             document.getElementById('quizUI').style.display = 'block';
             loadQuestion();
         }
 
+        function backToClasses() {
+            document.getElementById('quizUI').style.display = 'none';
+            document.getElementById('resultUI').style.display = 'none';
+            document.getElementById('classSelectUI').style.display = 'block';
+        }
+
         function loadQuestion() {
-            if(typeof quizData === 'undefined') {
-                document.getElementById('q-text').innerText = "Questions database not linked yet!";
-                return;
-            }
             answered = false;
             document.getElementById('next-btn').style.display = 'none';
             
-            const qData = quizData[currentQ];
+            const questionsList = quizData[selectedClass];
+            const qData = questionsList[currentQ];
+            
             document.getElementById('q-text').innerText = `Q${currentQ + 1}: ${qData.question}`;
             
             const optionsBox = document.getElementById('options-box');
@@ -256,7 +284,8 @@
             if(answered) return; 
             answered = true;
             
-            const correctIndex = quizData[currentQ].answer;
+            const questionsList = quizData[selectedClass];
+            const correctIndex = questionsList[currentQ].answer;
             const allBtns = document.getElementById('options-box').children;
             
             if(selectedIndex === correctIndex) {
@@ -271,17 +300,15 @@
 
         function nextQuestion() {
             currentQ++;
-            if(currentQ < quizData.length) {
+            const questionsList = quizData[selectedClass];
+            if(currentQ < questionsList.length) {
                 loadQuestion();
             } else {
                 document.getElementById('quizUI').style.display = 'none';
                 document.getElementById('resultUI').style.display = 'block';
-                document.getElementById('score-text').innerText = `Your Score: ${score} / ${quizData.length}`;
+                document.getElementById('score-text').innerText = `Your Score: ${score} / ${questionsList.length}`;
             }
         }
-
-        // Initialize quiz on load
-        window.onload = startQuiz;
     </script>
 </body>
 </html>
