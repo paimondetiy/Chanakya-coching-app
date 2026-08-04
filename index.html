@@ -3,239 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marg EdTech | Premium Coaching App</title>
-    
-    <!-- Google Fonts: Poppins for modern App Look -->
+    <title>Chanakya Coaching Centre</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Quizzes Database Link -->
+    <script src="questions.js"></script>
 
     <style>
         :root {
-            --primary-navy: #0f172a; /* Deep Navy Blue */
-            --accent-saffron: #f97316; /* Trust Saffron/Orange */
+            --primary-navy: #0f172a; 
+            --accent-saffron: #f97316; 
             --bg-light: #f8fafc;
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --white: #ffffff;
             --success: #22c55e;
+            --border: #e2e8f0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 70px; }
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            padding-bottom: 70px; /* Space for bottom nav */
-        }
+        header { background: var(--primary-navy); color: var(--white); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 8px; line-height: 1.2; }
+        .logo span { color: var(--accent-saffron); font-size: 0.8rem; display: block; font-weight: 500;}
+        .call-btn { background: var(--accent-saffron); color: var(--white); text-decoration: none; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
 
-        /* --- Header & Top Bar --- */
-        header {
-            background: var(--primary-navy);
-            color: var(--white);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo span { color: var(--accent-saffron); }
-
-        .header-actions .call-btn {
-            background: var(--accent-saffron);
-            color: var(--white);
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* --- Live Announcement Ticker --- */
-        .ticker-wrap {
-            background: #fee2e2;
-            color: #dc2626;
-            padding: 8px 0;
-            overflow: hidden;
-            position: relative;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-        }
-        
-        .ticker-wrap i {
-            margin: 0 15px;
-            animation: blink 1s infinite;
-        }
-
-        .ticker-move {
-            display: inline-block;
-            white-space: nowrap;
-            animation: ticker 15s linear infinite;
-        }
-
-        @keyframes ticker {
-            0% { transform: translate3d(100%, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
-        }
+        .ticker-wrap { background: #fee2e2; color: #dc2626; padding: 8px 0; overflow: hidden; position: relative; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; }
+        .ticker-wrap i { margin: 0 15px; animation: blink 1s infinite; }
+        .ticker-move { display: inline-block; white-space: nowrap; animation: ticker 15s linear infinite; }
+        @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- App Sections --- */
-        .app-section {
-            display: none;
-            padding: 20px;
-            animation: fadeIn 0.3s ease-in-out;
-        }
+        .app-section { display: none; padding: 20px; animation: fadeIn 0.3s ease-in-out; }
         .app-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Hero Banner */
+        .hero-card { background: linear-gradient(135deg, var(--primary-navy), #1e293b); border-radius: 15px; padding: 25px 20px; color: var(--white); text-align: center; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2); }
+        .hero-card h2 { font-size: 1.6rem; margin-bottom: 5px; color: var(--accent-saffron); }
+        .hero-card p { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px; font-style: italic;}
+        .enroll-btn { background: var(--accent-saffron); color: var(--white); border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; font-weight: 600; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); cursor: pointer; width: 100%;}
 
-        /* --- Hero Banner --- */
-        .hero-card {
-            background: linear-gradient(135deg, var(--primary-navy), #1e293b);
-            border-radius: 15px;
-            padding: 25px 20px;
-            color: var(--white);
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
-        }
+        .section-title { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-navy); font-weight: 700; border-bottom: 2px solid var(--accent-saffron); padding-bottom: 5px; display: inline-block;}
 
-        .hero-card h2 { font-size: 1.8rem; margin-bottom: 10px; }
-        .hero-card p { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px; }
+        /* Cards Design */
+        .card { background: var(--white); padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid var(--border); border-left: 4px solid var(--accent-saffron); }
+        .card h3 { font-size: 1.1rem; color: var(--primary-navy); margin-bottom: 5px; }
+        .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; }
+        .fee-tag { background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-top: 5px; }
+
+        /* Timing Grid */
+        .timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .time-box { background: var(--white); padding: 10px; text-align: center; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem; }
+        .time-box i { color: var(--accent-saffron); display: block; font-size: 1.2rem; margin-bottom: 5px; }
+
+        /* Teacher Profile */
+        .teacher-card { display: flex; align-items: center; gap: 15px; background: var(--white); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border); }
+        .teacher-img { width: 60px; height: 60px; border-radius: 50%; background: #e2e8f0; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: var(--text-muted); }
+        .teacher-info h4 { color: var(--primary-navy); font-size: 1.05rem; }
+        .teacher-info p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+        .exp-badge { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+
+        /* Quiz UI */
+        .quiz-container { background: var(--white); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
+        .quiz-option { display: block; width: 100%; text-align: left; background: #f1f5f9; border: 1px solid var(--border); padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; color: #166534; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
         
-        .enroll-btn {
-            background: var(--accent-saffron);
-            color: var(--white);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
-            cursor: pointer;
-        }
+        .footer-info { text-align: center; margin-top: 20px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; }
+        .map-btn { display: inline-flex; align-items: center; gap: 5px; color: var(--primary-navy); font-weight: 600; text-decoration: none; background: #e2e8f0; padding: 5px 15px; border-radius: 20px; margin-top: 10px; }
 
-        /* --- Features Grid --- */
-        .features-title { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-navy); }
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .feature-box {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid #e2e8f0;
-        }
-
-        .feature-box i {
-            font-size: 2rem;
-            color: var(--accent-saffron);
-            margin-bottom: 10px;
-        }
+        .floating-doubt { position: fixed; bottom: 90px; right: 20px; background: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; }
         
-        .feature-box h4 { font-size: 0.95rem; color: var(--text-dark); }
-
-        /* --- Footer Location --- */
-        .footer-info {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* --- Floating Doubt Button --- */
-        .floating-doubt {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-        .floating-doubt:active { transform: scale(0.9); }
-
-        /* --- Bottom Navigation (App Style) --- */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--white);
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            font-weight: 500;
-            gap: 4px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .nav-item i { font-size: 1.4rem; }
-
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white); display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 1000; border-top: 1px solid var(--border); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 0.75rem; font-weight: 500; gap: 4px; cursor: pointer; transition: 0.2s; }
         .nav-item.active { color: var(--primary-navy); }
         .nav-item.active i { color: var(--accent-saffron); }
+        .nav-item i { font-size: 1.4rem; }
 
-        @media (min-width: 768px) {
-            body { max-width: 480px; margin: 0 auto; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.1); border-radius: 20px; margin-top: 20px; overflow: hidden; height: 95vh; position: relative; }
-            .bottom-nav { position: absolute; }
-            .header { border-radius: 20px 20px 0 0; }
-            .floating-doubt { position: absolute; }
-        }
+        @media (min-width: 768px) { body { max-width: 480px; margin: 0 auto; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.1); border-radius: 20px; margin-top: 20px; min-height: 95vh; position: relative; } .bottom-nav, .floating-doubt { position: absolute; } header { border-radius: 20px 20px 0 0; } }
     </style>
 </head>
 <body>
@@ -243,129 +91,197 @@
     <!-- Header Section -->
     <header>
         <div class="logo">
-            <i class="fa-solid fa-graduation-cap" style="color: var(--accent-saffron);"></i>
-            Marg<span>EdTech</span>
+            <div>
+                Chanakya Coaching
+                <span>"हर बच्चे में छुपा है एक चाणक्य"</span>
+            </div>
         </div>
-        <div class="header-actions">
-            <!-- Direct Call Link (Section 7) -->
-            <a href="tel:+919876543210" class="call-btn"><i class="fa-solid fa-phone"></i> Call</a>
-        </div>
+        <a href="tel:+918051670449" class="call-btn"><i class="fa-solid fa-phone"></i> Call</a>
     </header>
 
-    <!-- Live Announcement Ticker -->
     <div class="ticker-wrap">
         <i class="fa-solid fa-bell"></i>
         <div class="ticker-move">
-            🔥 Admission Open for 2026 Batch! Register before 15th to get 20% Discount. New Foundation Batch starts next Monday.
+            🔥 Admission Open for All Classes (Nursery to 10th)! Join Chanakya Coaching Centre today.
         </div>
     </div>
 
-    <!-- MAIN CONTENT AREA -->
-    
-    <!-- Home Section (Phase 1) -->
+    <!-- MAIN SECTIONS -->
     <section id="home" class="app-section active">
-        <!-- Hero Banner -->
         <div class="hero-card">
-            <h2>Your Journey to Success Starts Here</h2>
-            <p>Join the most trusted institute and secure your future with top educators.</p>
-            <button class="enroll-btn">Explore Batches</button>
+            <h2>Welcome to Chanakya</h2>
+            <p>Best education in South Mandiri for Nursery to Class 10th.</p>
+            <button class="enroll-btn" onclick="window.open('https://wa.me/918051670449?text=Hello Sir, I want to join the new batch.','_blank')">Join Now via WhatsApp</button>
         </div>
 
-        <h3 class="features-title">Quick Actions</h3>
-        <div class="features-grid">
-            <div class="feature-box" onclick="switchAppTab('library')">
-                <i class="fa-solid fa-file-pdf"></i>
-                <h4>Free Notes</h4>
+        <h3 class="section-title">Class Timings</h3>
+        <div class="timing-grid">
+            <div class="time-box"><i class="fa-solid fa-sun"></i> <b>Morning</b><br>7 AM - 9 AM</div>
+            <div class="time-box"><i class="fa-solid fa-cloud-sun"></i> <b>Afternoon</b><br>2 PM - 5 PM</div>
+            <div class="time-box"><i class="fa-solid fa-moon"></i> <b>Evening</b><br>5 PM - 8 PM</div>
+        </div>
+
+        <h3 class="section-title">Our Expert Teachers</h3>
+        <!-- Teacher 1 -->
+        <div class="teacher-card">
+            <div class="teacher-img"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="teacher-info">
+                <h4>Rishikesh Sir <span class="exp-badge">10 Yrs Exp</span></h4>
+                <p><b>Subjects:</b> All Subjects (Class 6 - 10)</p>
+                <p><b>Qualification:</b> B.Ed | Age: 30</p>
             </div>
-            <div class="feature-box" onclick="switchAppTab('quizzes')">
-                <i class="fa-solid fa-stopwatch"></i>
-                <h4>Daily Quiz</h4>
-            </div>
-            <div class="feature-box">
-                <i class="fa-solid fa-video"></i>
-                <h4>Demo Video</h4>
-            </div>
-            <div class="feature-box">
-                <i class="fa-solid fa-award"></i>
-                <h4>Toppers</h4>
+        </div>
+        <!-- Teacher 2 -->
+        <div class="teacher-card">
+            <div class="teacher-img"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="teacher-info">
+                <h4>Gautam Sir <span class="exp-badge">6 Yrs Exp</span></h4>
+                <p><b>Subjects:</b> All Subjects (Nursery - Class 5)</p>
+                <p><b>Qualification:</b> B.Sc | Age: 25</p>
             </div>
         </div>
 
-        <!-- Location integration -->
         <div class="footer-info">
-            <p><i class="fa-solid fa-location-dot"></i> Main Branch: Patna, Bihar</p>
-            <p style="margin-top: 5px;">© 2026 Marg EdTech. All Rights Reserved.</p>
+            <p><i class="fa-solid fa-location-dot"></i> South Mandiri, Hathua Pathshala, Patna-1</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=25.6139480,85.1303130" target="_blank" class="map-btn"><i class="fa-solid fa-map"></i> Get Directions</a>
         </div>
     </section>
 
-    <!-- Placeholder Sections for Next Phases -->
+    <!-- BATCHES & FEES SECTION -->
     <section id="batches" class="app-section">
-        <h3 class="features-title">Our Live Batches</h3>
-        <p style="color: var(--text-muted);">Batch cards will be designed in Phase 2...</p>
+        <h3 class="section-title">Classes & Fee Structure</h3>
+        
+        <div class="card">
+            <h3>Foundation Level</h3>
+            <p>Class: Nursery to Class 3</p>
+            <p>Subjects: All Core Subjects</p>
+            <div class="fee-tag"><i class="fa-solid fa-wallet"></i> ₹350 / Month</div>
+        </div>
+
+        <div class="card">
+            <h3>Middle Level</h3>
+            <p>Class: Class 4 to Class 7</p>
+            <p>Subjects: All Core Subjects</p>
+            <div class="fee-tag"><i class="fa-solid fa-wallet"></i> ₹450 / Month</div>
+        </div>
+
+        <div class="card">
+            <h3>Board Level</h3>
+            <p>Class: Class 8 to Class 10</p>
+            <p>Subjects: All Core Subjects</p>
+            <div class="fee-tag"><i class="fa-solid fa-wallet"></i> ₹550 / Month</div>
+        </div>
     </section>
 
-    <section id="library" class="app-section">
-        <h3 class="features-title">Digital Library</h3>
-        <p style="color: var(--text-muted);">Notes and Demo Videos will appear here...</p>
-    </section>
-
+    <!-- QUIZ SECTION -->
     <section id="quizzes" class="app-section">
-        <h3 class="features-title">Interactive Quizzes</h3>
-        <p style="color: var(--text-muted);">MCQ engine will be built here...</p>
+        <h3 class="section-title">Live Practice Test</h3>
+        <div class="quiz-container" id="quizUI">
+            <h4 id="q-text" style="margin-bottom: 15px; color: var(--primary-navy); font-size: 1.1rem;">Loading...</h4>
+            <div id="options-box"></div>
+            <button id="next-btn" class="enroll-btn" style="display: none; margin-top: 15px;" onclick="nextQuestion()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="quiz-container" id="resultUI" style="display: none; text-align: center;">
+            <i class="fa-solid fa-trophy" style="font-size: 3rem; color: #eab308; margin-bottom: 10px;"></i>
+            <h3>Test Completed!</h3>
+            <p id="score-text" style="margin: 10px 0; font-size: 1.2rem; font-weight: bold;"></p>
+            <button class="enroll-btn" onclick="startQuiz()">Restart Test</button>
+        </div>
     </section>
 
-    <!-- Floating Doubt WhatsApp Button -->
-    <a href="https://wa.me/919876543210?text=Hello Sir, I have a doubt regarding admission." target="_blank" class="floating-doubt">
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/918051670449?text=Hello Sir, I have a doubt regarding admission." target="_blank" class="floating-doubt">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="switchAppTab('home', this)">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
+            <i class="fa-solid fa-house"></i><span>Home</span>
         </div>
         <div class="nav-item" onclick="switchAppTab('batches', this)">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Batches</span>
-        </div>
-        <div class="nav-item" onclick="switchAppTab('library', this)">
-            <i class="fa-solid fa-folder-open"></i>
-            <span>Library</span>
+            <i class="fa-solid fa-book-open"></i><span>Classes</span>
         </div>
         <div class="nav-item" onclick="switchAppTab('quizzes', this)">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <span>Quizzes</span>
+            <i class="fa-solid fa-pen-to-square"></i><span>Test</span>
         </div>
     </nav>
 
     <script>
-        // Smooth Tab Switching Engine
-        function switchAppTab(tabId, element = null) {
-            // Hide all sections
+        function switchAppTab(tabId, element) {
             document.querySelectorAll('.app-section').forEach(el => el.classList.remove('active'));
-            // Remove active class from all nav items
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            
-            // Show selected section
             document.getElementById(tabId).classList.add('active');
-            
-            // Update active state on nav item if clicked from bottom bar
-            if(element) {
-                element.classList.add('active');
-            } else {
-                // If clicked from a box inside home (like Quick Actions)
-                const navItems = document.querySelectorAll('.nav-item');
-                navItems.forEach(nav => {
-                    if(nav.innerText.trim().toLowerCase().includes(tabId) || 
-                      (tabId === 'library' && nav.innerText.trim() === 'Library') ||
-                      (tabId === 'quizzes' && nav.innerText.trim() === 'Quizzes')) {
-                        nav.classList.add('active');
-                    }
-                });
-            }
+            element.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // --- QUIZ ENGINE ---
+        let currentQ = 0;
+        let score = 0;
+        let answered = false;
+
+        function startQuiz() {
+            currentQ = 0;
+            score = 0;
+            document.getElementById('resultUI').style.display = 'none';
+            document.getElementById('quizUI').style.display = 'block';
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if(typeof quizData === 'undefined') {
+                document.getElementById('q-text').innerText = "Questions database not linked yet!";
+                return;
+            }
+            answered = false;
+            document.getElementById('next-btn').style.display = 'none';
+            
+            const qData = quizData[currentQ];
+            document.getElementById('q-text').innerText = `Q${currentQ + 1}: ${qData.question}`;
+            
+            const optionsBox = document.getElementById('options-box');
+            optionsBox.innerHTML = '';
+            
+            qData.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsBox.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, btn) {
+            if(answered) return; 
+            answered = true;
+            
+            const correctIndex = quizData[currentQ].answer;
+            const allBtns = document.getElementById('options-box').children;
+            
+            if(selectedIndex === correctIndex) {
+                btn.classList.add('correct');
+                score++;
+            } else {
+                btn.classList.add('wrong');
+                allBtns[correctIndex].classList.add('correct');
+            }
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if(currentQ < quizData.length) {
+                loadQuestion();
+            } else {
+                document.getElementById('quizUI').style.display = 'none';
+                document.getElementById('resultUI').style.display = 'block';
+                document.getElementById('score-text').innerText = `Your Score: ${score} / ${quizData.length}`;
+            }
+        }
+
+        // Initialize quiz on load
+        window.onload = startQuiz;
     </script>
 </body>
 </html>
