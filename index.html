@@ -177,8 +177,54 @@
     </section>
 
     <!-- QUIZ SECTION WITH CLASS SELECTOR -->
+        <!-- QUIZ SECTION WITH CLASS SELECTOR -->
     <section id="quizzes" class="app-section">
         <h3 class="section-title">Live Practice Test</h3>
+        
+        <!-- Step 1: Select Class (Nursery to 10th) -->
+        <div class="quiz-container" id="classSelectUI">
+            <h4 style="margin-bottom: 15px; color: var(--primary-navy);">Select Your Class:</h4>
+            
+            <!-- Grid Layout for clean buttons -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('nursery')">Nursery</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class1')">Class 1</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class2')">Class 2</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class3')">Class 3</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class4')">Class 4</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class5')">Class 5</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class6')">Class 6</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class7')">Class 7</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class8')">Class 8</div>
+                <div class="class-btn" style="margin-bottom: 0;" onclick="selectClass('class9')">Class 9</div>
+                <div class="class-btn" style="margin-bottom: 0; grid-column: span 2;" onclick="selectClass('class10')">Class 10</div>
+            </div>
+        </div>
+
+        <!-- Step 2: Quiz UI with Back Button -->
+        <div class="quiz-container" id="quizUI" style="display: none;">
+            
+            <!-- Permanent Back Button -->
+            <button style="background: #fee2e2; color: #dc2626; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 8px;" onclick="backToClasses()">
+                <i class="fa-solid fa-arrow-left"></i> Back to Classes
+            </button>
+            
+            <h4 id="q-text" style="margin-bottom: 15px; color: var(--primary-navy); font-size: 1.1rem;">Loading...</h4>
+            <div id="options-box"></div>
+            <button id="next-btn" class="enroll-btn" style="display: none; margin-top: 15px;" onclick="nextQuestion()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <!-- Step 3: Result UI with Back Button -->
+        <div class="quiz-container" id="resultUI" style="display: none; text-align: center;">
+            <i class="fa-solid fa-trophy" style="font-size: 3rem; color: #eab308; margin-bottom: 10px;"></i>
+            <h3>Test Completed!</h3>
+            <p id="score-text" style="margin: 10px 0; font-size: 1.2rem; font-weight: bold;"></p>
+            
+            <button class="enroll-btn" onclick="backToClasses()" style="background: var(--primary-navy); margin-top: 10px;">
+                <i class="fa-solid fa-list"></i> Choose Another Class
+            </button>
+        </div>
+    </section>
         
         <!-- Step 1: Select Class -->
         <div class="quiz-container" id="classSelectUI">
