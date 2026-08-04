@@ -125,7 +125,7 @@
             </div>
         </div>
         <div class="header-actions">
-            <!-- Dark Mode Toggle Button -->
+            <!-- Dark Mode Toggle Button with Correct ID -->
             <button class="dark-btn" id="darkModeBtn" onclick="toggleDarkMode()">
                 <i class="fa-solid fa-moon" id="darkIcon"></i>
             </button>
@@ -268,7 +268,7 @@
     </nav>
 
     <script>
-        // Apply saved Dark Mode immediately before page renders
+        // Apply saved Dark Mode immediately on load
         if (localStorage.getItem('chanakya_theme') === 'dark') {
             document.body.classList.add('dark-mode');
         }
@@ -281,7 +281,7 @@
             }
         });
 
-        // Fully functional Dark Mode Toggle with persistence
+        // Fully functional Dark Mode Toggle
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const icon = document.getElementById('darkIcon');
@@ -353,4 +353,4 @@
             const optionsBox = document.getElementById('options-box');
             optionsBox.innerHTML = '';
             
-         
+            qData.opti
