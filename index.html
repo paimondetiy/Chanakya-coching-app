@@ -268,12 +268,20 @@
     </nav>
 
     <script>
-        // Check Saved Dark Mode on Page Load
-        window.addEventListener('DOMContentLoaded', () => {
+        // Check Saved Dark Mode on Page Load immediately
+        (function() {
             const savedTheme = localStorage.getItem('chanakya_theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
-                document.getElementById('darkIcon').className = 'fa-solid fa-sun';
+            }
+        })();
+
+        // Update Icon after DOM loads
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('chanakya_theme');
+            const icon = document.getElementById('darkIcon');
+            if (savedTheme === 'dark' && icon) {
+                icon.className = 'fa-solid fa-sun';
             }
         });
 
@@ -284,10 +292,10 @@
             
             if (document.body.classList.contains('dark-mode')) {
                 localStorage.setItem('chanakya_theme', 'dark');
-                icon.className = 'fa-solid fa-sun';
+                if(icon) icon.className = 'fa-solid fa-sun';
             } else {
                 localStorage.setItem('chanakya_theme', 'light');
-                icon.className = 'fa-solid fa-moon';
+                if(icon) icon.className = 'fa-solid fa-moon';
             }
         }
 
@@ -343,10 +351,4 @@
             const optionsBox = document.getElementById('options-box');
             optionsBox.innerHTML = '';
             
-            qData.options.forEach((opt, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'quiz-option';
-                btn.innerText = opt;
-                btn.onclick = () => checkAnswer(index, btn);
-                optionsBox.appendChild(btn);
-  
+            qData.options.forEach((
