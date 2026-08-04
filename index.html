@@ -177,36 +177,8 @@
     </section>
 
     <!-- QUIZ SECTION WITH CLASS SELECTOR -->
-        <!-- QUIZ SECTION WITH CLASS SELECTOR -->
     <section id="quizzes" class="app-section">
         <h3 class="section-title">Live Practice Test</h3>
-        
-        <!-- Step 1: Select Class -->
-        <div class="quiz-container" id="classSelectUI">
-            <h4 style="margin-bottom: 15px; color: var(--primary-navy);">अपनी क्लास चुनें:</h4>
-            <div class="class-btn" onclick="selectClass('class10')">📚 Class 10th Test</div>
-            <div class="class-btn" onclick="selectClass('class9')">📚 Class 9th Test</div>
-            <div class="class-btn" onclick="selectClass('class8')">📚 Class 8th Test</div>
-            <!-- बाद में यहाँ class7, class6 भी जोड़ सकते हो -->
-        </div>
-
-        <!-- Step 2: Quiz UI -->
-        <div class="quiz-container" id="quizUI" style="display: none;">
-            <button style="background: #fee2e2; color: #dc2626; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; margin-bottom: 15px;" onclick="backToClasses()"><i class="fa-solid fa-arrow-left"></i> क्लास बदलें (Back)</button>
-            <h4 id="q-text" style="margin-bottom: 15px; color: var(--primary-navy); font-size: 1.1rem;">Loading...</h4>
-            <div id="options-box"></div>
-            <button id="next-btn" class="enroll-btn" style="display: none; margin-top: 15px;" onclick="nextQuestion()">अगला प्रश्न (Next) <i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-
-        <!-- Step 3: Result UI with Clear Back Button -->
-        <div class="quiz-container" id="resultUI" style="display: none; text-align: center;">
-            <i class="fa-solid fa-trophy" style="font-size: 3rem; color: #eab308; margin-bottom: 10px;"></i>
-            <h3>टेस्ट पूरा हो गया!</h3>
-            <p id="score-text" style="margin: 10px 0; font-size: 1.2rem; font-weight: bold;"></p>
-            <button class="enroll-btn" onclick="backToClasses()" style="background: var(--primary-navy); margin-top: 10px;"><i class="fa-solid fa-list"></i> दूसरी क्लास चुनें (Back to Classes)</button>
-        </div>
-    </section>
-    
         
         <!-- Step 1: Select Class -->
         <div class="quiz-container" id="classSelectUI">
