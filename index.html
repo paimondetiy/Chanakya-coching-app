@@ -20,42 +20,17 @@
             --white: #ffffff;
             --success: #22c55e;
             --border: #e2e8f0;
-            --card-bg: #ffffff;
-            --ticker-bg: #fee2e2;
-            --ticker-text: #dc2626;
-            --time-bg: #ffffff;
-            --class-btn-bg: #f1f5f9;
-            --class-btn-text: #0f172a;
-        }
-
-        /* Dark Mode Colors */
-        body.dark-mode {
-            --primary-navy: #1e293b;
-            --bg-light: #0f172a;
-            --text-dark: #f8fafc;
-            --text-muted: #94a3b8;
-            --white: #1e293b;
-            --border: #334155;
-            --card-bg: #1e293b;
-            --ticker-bg: #7f1d1d;
-            --ticker-text: #fca5a5;
-            --time-bg: #1e293b;
-            --class-btn-bg: #334155;
-            --class-btn-text: #f8fafc;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 70px; transition: background 0.3s, color 0.3s; }
+        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 70px; }
 
         header { background: var(--primary-navy); color: var(--white); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .logo { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 8px; line-height: 1.2; }
         .logo span { color: var(--accent-saffron); font-size: 0.8rem; display: block; font-weight: 500;}
-        
-        .header-btns { display: flex; align-items: center; gap: 8px; }
-        .call-btn { background: var(--accent-saffron); color: var(--white); text-decoration: none; padding: 7px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
-        .dark-toggle-btn { background: rgba(255, 255, 255, 0.15); border: none; color: var(--white); width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1rem; cursor: pointer; transition: 0.2s; }
+        .call-btn { background: var(--accent-saffron); color: var(--white); text-decoration: none; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
 
-        .ticker-wrap { background: var(--ticker-bg); color: var(--ticker-text); padding: 8px 0; overflow: hidden; position: relative; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; }
+        .ticker-wrap { background: #fee2e2; color: #dc2626; padding: 8px 0; overflow: hidden; position: relative; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; }
         .ticker-wrap i { margin: 0 15px; animation: blink 1s infinite; }
         .ticker-move { display: inline-block; white-space: nowrap; animation: ticker 15s linear infinite; }
         @keyframes ticker { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
@@ -66,52 +41,52 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Hero Banner */
-        .hero-card { background: linear-gradient(135deg, var(--primary-navy), #1e293b); border-radius: 15px; padding: 25px 20px; color: var(--white); text-align: center; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2); border: 1px solid var(--border); }
+        .hero-card { background: linear-gradient(135deg, var(--primary-navy), #1e293b); border-radius: 15px; padding: 25px 20px; color: var(--white); text-align: center; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2); }
         .hero-card h2 { font-size: 1.6rem; margin-bottom: 5px; color: var(--accent-saffron); }
-        .hero-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; font-style: italic;}
+        .hero-card p { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px; font-style: italic;}
         .enroll-btn { background: var(--accent-saffron); color: var(--white); border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; font-weight: 600; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); cursor: pointer; width: 100%;}
 
-        .section-title { font-size: 1.2rem; margin-bottom: 15px; color: var(--text-dark); font-weight: 700; border-bottom: 2px solid var(--accent-saffron); padding-bottom: 5px; display: inline-block;}
+        .section-title { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-navy); font-weight: 700; border-bottom: 2px solid var(--accent-saffron); padding-bottom: 5px; display: inline-block;}
 
         /* Cards Design */
-        .card { background: var(--card-bg); color: var(--text-dark); padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid var(--border); border-left: 4px solid var(--accent-saffron); }
-        .card h3 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 5px; }
+        .card { background: var(--white); padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid var(--border); border-left: 4px solid var(--accent-saffron); }
+        .card h3 { font-size: 1.1rem; color: var(--primary-navy); margin-bottom: 5px; }
         .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; }
         .fee-tag { background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-top: 5px; }
 
         /* Timing Grid */
         .timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        .time-box { background: var(--time-bg); color: var(--text-dark); padding: 10px; text-align: center; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem; }
+        .time-box { background: var(--white); padding: 10px; text-align: center; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem; }
         .time-box i { color: var(--accent-saffron); display: block; font-size: 1.2rem; margin-bottom: 5px; }
 
         /* Teacher Profile */
-        .teacher-card { display: flex; align-items: center; gap: 15px; background: var(--card-bg); color: var(--text-dark); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border); }
-        .teacher-img { width: 60px; height: 60px; border-radius: 50%; background: var(--border); display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: var(--text-muted); }
-        .teacher-info h4 { color: var(--text-dark); font-size: 1.05rem; }
+        .teacher-card { display: flex; align-items: center; gap: 15px; background: var(--white); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border); }
+        .teacher-img { width: 60px; height: 60px; border-radius: 50%; background: #e2e8f0; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: var(--text-muted); }
+        .teacher-info h4 { color: var(--primary-navy); font-size: 1.05rem; }
         .teacher-info p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
         .exp-badge { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
 
         /* Quiz UI */
-        .quiz-container { background: var(--card-bg); color: var(--text-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
-        .quiz-option { display: block; width: 100%; text-align: left; background: var(--class-btn-bg); color: var(--text-dark); border: 1px solid var(--border); padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
-        .quiz-option.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; }
-        .quiz-option.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+        .quiz-container { background: var(--white); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
+        .quiz-option { display: block; width: 100%; text-align: left; background: #f1f5f9; border: 1px solid var(--border); padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; color: #166534; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
 
-        .class-btn { background: var(--class-btn-bg); border: 2px solid var(--border); padding: 12px; border-radius: 10px; font-weight: 600; text-align: center; cursor: pointer; color: var(--class-btn-text); transition: 0.2s; display: flex; justify-content: center; align-items: center; }
-        .class-btn:hover { background: var(--accent-saffron); color: #fff; border-color: var(--accent-saffron); }
+        .class-btn { background: #f1f5f9; border: 2px solid var(--border); padding: 12px; border-radius: 10px; font-weight: 600; text-align: center; cursor: pointer; color: var(--primary-navy); transition: 0.2s; display: flex; justify-content: center; align-items: center; }
+        .class-btn:hover { background: var(--primary-navy); color: var(--white); border-color: var(--primary-navy); }
         
         .footer-info { text-align: center; margin-top: 20px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; }
-        .map-btn { display: inline-flex; align-items: center; gap: 5px; color: var(--text-dark); font-weight: 600; text-decoration: none; background: var(--border); padding: 5px 15px; border-radius: 20px; margin-top: 10px; }
+        .map-btn { display: inline-flex; align-items: center; gap: 5px; color: var(--primary-navy); font-weight: 600; text-decoration: none; background: #e2e8f0; padding: 5px 15px; border-radius: 20px; margin-top: 10px; }
 
         .floating-doubt { position: fixed; bottom: 90px; right: 20px; background: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; }
         
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 1000; border-top: 1px solid var(--border); }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white); display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 1000; border-top: 1px solid var(--border); }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 0.75rem; font-weight: 500; gap: 4px; cursor: pointer; transition: 0.2s; }
-        .nav-item.active { color: var(--accent-saffron); }
+        .nav-item.active { color: var(--primary-navy); }
         .nav-item.active i { color: var(--accent-saffron); }
         .nav-item i { font-size: 1.4rem; }
 
-        @media (min-width: 768px) { body { max-width: 480px; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.2); border-radius: 20px; margin-top: 20px; min-height: 95vh; position: relative; overflow-x: hidden; } .bottom-nav, .floating-doubt { position: absolute; } header { border-radius: 20px 20px 0 0; } }
+        @media (min-width: 768px) { body { max-width: 480px; margin: 0 auto; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.1); border-radius: 20px; margin-top: 20px; min-height: 95vh; position: relative; } .bottom-nav, .floating-doubt { position: absolute; } header { border-radius: 20px 20px 0 0; } }
     </style>
 </head>
 <body>
@@ -124,13 +99,7 @@
                 <span>"हर बच्चे में छुपा है एक चाणक्य"</span>
             </div>
         </div>
-        <div class="header-btns">
-            <!-- Dark Mode Toggle Button -->
-            <button class="dark-toggle-btn" id="darkModeBtn" onclick="toggleDarkMode()" title="Toggle Dark Mode">
-                <i class="fa-solid fa-moon" id="darkIcon"></i>
-            </button>
-            <a href="tel:+918051670449" class="call-btn"><i class="fa-solid fa-phone"></i> Call</a>
-        </div>
+        <a href="tel:+918051670449" class="call-btn"><i class="fa-solid fa-phone"></i> Call</a>
     </header>
 
     <div class="ticker-wrap">
@@ -211,7 +180,7 @@
         
         <!-- Step 1: Select Class -->
         <div class="quiz-container" id="classSelectUI">
-            <h4 style="margin-bottom: 15px;">Select Your Class:</h4>
+            <h4 style="margin-bottom: 15px; color: var(--primary-navy);">Select Your Class:</h4>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <div class="class-btn" onclick="selectClass('nursery')">Nursery</div>
@@ -233,7 +202,7 @@
             <button style="background: #fee2e2; color: #dc2626; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 8px;" onclick="backToClasses()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Classes
             </button>
-            <h4 id="q-text" style="margin-bottom: 15px; font-size: 1.1rem;">Loading...</h4>
+            <h4 id="q-text" style="margin-bottom: 15px; color: var(--primary-navy); font-size: 1.1rem;">Loading...</h4>
             <div id="options-box"></div>
             <button id="next-btn" class="enroll-btn" style="display: none; margin-top: 15px;" onclick="nextQuestion()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
         </div>
@@ -268,45 +237,12 @@
     </nav>
 
     <script>
-        // Apply Dark Mode immediately on load to prevent flickering
-        if (localStorage.getItem('chanakya_theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('chanakya_theme');
-            const icon = document.getElementById('darkIcon');
-            if (savedTheme === 'dark' && icon) {
-                icon.className = 'fa-solid fa-sun';
-            }
-        });
-
-        // Dark Mode Toggle Logic
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const icon = document.getElementById('darkIcon');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('chanakya_theme', 'dark');
-                if(icon) icon.className = 'fa-solid fa-sun';
-            } else {
-                localStorage.setItem('chanakya_theme', 'light');
-                if(icon) icon.className = 'fa-solid fa-moon';
-            }
-        }
-
         // Tab Switch Logic
         function switchAppTab(tabId, element) {
             document.querySelectorAll('.app-section').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            
-            const targetSection = document.getElementById(tabId);
-            if(targetSection) {
-                targetSection.classList.add('active');
-            }
-            if(element) {
-                element.classList.add('active');
-            }
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -316,6 +252,7 @@
         let score = 0;
         let answered = false;
 
+        // Function to shuffle and pick 20 questions
         function getRandomQuestions(arr, count = 20) {
             let shuffled = [...arr].sort(() => 0.5 - Math.random());
             return shuffled.slice(0, count);
@@ -323,10 +260,11 @@
 
         function selectClass(className) {
             if (typeof quizData === 'undefined' || !quizData[className]) {
-                alert("इस क्लास के लिए अभी प्रश्न लोड नहीं हो पाए हैं या 'questions.js' फाइल में डेटा चेक करें।");
+                alert("इस क्लास के लिए अभी प्रश्न उपलब्ध नहीं हैं। कृपया 'questions.js' में इस क्लास का डेटा डालें।");
                 return;
             }
             
+            // Get 20 random questions from the 100 available questions
             currentQuestions = getRandomQuestions(quizData[className], 20);
             currentQ = 0;
             score = 0;
@@ -348,9 +286,48 @@
             document.getElementById('next-btn').style.display = 'none';
             
             const qData = currentQuestions[currentQ];
+            
             document.getElementById('q-text').innerText = `Q${currentQ + 1}: ${qData.question}`;
             
             const optionsBox = document.getElementById('options-box');
             optionsBox.innerHTML = '';
             
-            qData.o
+            qData.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsBox.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, btn) {
+            if(answered) return; 
+            answered = true;
+            
+            const correctIndex = currentQuestions[currentQ].answer;
+            const allBtns = document.getElementById('options-box').children;
+            
+            if(selectedIndex === correctIndex) {
+                btn.classList.add('correct');
+                score++;
+            } else {
+                btn.classList.add('wrong');
+                allBtns[correctIndex].classList.add('correct');
+            }
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if(currentQ < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById('quizUI').style.display = 'none';
+                document.getElementById('resultUI').style.display = 'block';
+                document.getElementById('score-text').innerText = `Your Score: ${score} / ${currentQuestions.length}`;
+            }
+        }
+    </script>
+</body>
+</html>
