@@ -1,1 +1,1 @@
-# Chanakya-coching-app
+# Chanakya coching centre app
